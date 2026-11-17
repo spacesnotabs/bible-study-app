@@ -9,8 +9,13 @@ Bible, book/chapter selectors, previous/next navigation, chapter URLs, and a
 remembered last chapter. It uses simple native controls and one reader screen so
 we can iterate without maintaining multiple prototype applications.
 
-An API health endpoint and shared types/contracts remain in place for later work.
-Notes, highlights, LLM calls, login, cloud sync, and billing are not implemented yet.
+The Theme selector offers Light, Dark, and System appearance and remembers the
+choice on this device. System mode follows the operating system's appearance.
+
+The API includes configurable text and image model adapters, disabled by default.
+Study use cases consume small provider-independent interfaces; provider/model IDs,
+credentials, and limits stay on the server. See [model integration](docs/model-integration.md).
+Interactive study, notes, highlights, login, cloud sync, and billing are not implemented yet.
 
 ## Start locally
 
@@ -24,6 +29,7 @@ npm run dev
 
 - Web: <http://localhost:5173>
 - API health: <http://localhost:3001/api/v1/health>
+- Configured model availability: <http://localhost:3001/api/v1/ai/capabilities>
 - The web development server forwards `/api` requests to the API.
 - No account, database, API key, or paid service is needed.
 
@@ -72,8 +78,9 @@ docs/
 ```
 
 The reader and reading-position storage are implemented. Other feature directories
-contain responsibility notes, not placeholder implementations. A native mobile app
-can become another client later, consuming the API and shared packages.
+contain responsibility notes or small application interfaces. Model adapters are
+implemented in the server's `platform/llm` directory. A native mobile app can become
+another client later, consuming the API and shared packages.
 
 ## Development commands
 

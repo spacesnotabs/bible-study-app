@@ -18,5 +18,7 @@ The shared foundation is conservative evangelical/Protestant, with fair treatmen
 of differing conservative interpretations. AI explanations must remain distinct
 from Scripture quotations and from personal notes.
 
-No model endpoint or paid provider is enabled in this scaffold. Usage controls
-must exist before adding live calls.
+`models.ts` defines SDK-independent `TextGenerator` and `ImageGenerator` interfaces.
+The server's model adapters are implemented and configurable, but disabled by
+default. No generation endpoint is exposed. Usage controls must exist before a
+public study route invokes these services. See `docs/model-integration.md`.

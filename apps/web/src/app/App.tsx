@@ -1,5 +1,6 @@
 import { BibleReader } from '../features/reader/BibleReader';
+import { ThemeSelector } from './ThemeSelector';
 
 export function App() {
-  return <BibleReader />;
+  return <BibleReader headerActions={<ThemeSelector />} />;
 }

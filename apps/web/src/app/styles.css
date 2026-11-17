@@ -1,8 +1,8 @@
 :root {
   color-scheme: light dark;
   font-family: system-ui, sans-serif;
-  color: light-dark(#263b31, #e6eee5);
-  background: light-dark(#faf8f2, #1f2822);
+  color: light-dark(#202124, #e5e7eb);
+  background: light-dark(#ffffff, #111318);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
 }
@@ -32,6 +32,17 @@ h1 {
   align-items: baseline;
   gap: 0.5rem 1rem;
   margin-bottom: 1.5rem;
+}
+
+.reader-header-actions {
+  margin-left: auto;
+}
+
+.theme-control {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
 }
 
 a {
@@ -67,11 +78,11 @@ select {
   font-size: 1rem;
   min-height: 44px;
   max-width: 100%;
-  border: 1px solid light-dark(#aab5ad, #69796e);
+  border: 1px solid light-dark(#b8bcc3, #60656f);
   border-radius: 4px;
   padding: 0.5rem 0.75rem;
   color: inherit;
-  background: light-dark(#fffef9, #29362d);
+  background: light-dark(#f6f7f8, #22252c);
 }
 
 button:disabled {

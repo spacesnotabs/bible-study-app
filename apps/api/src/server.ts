@@ -1,17 +1,23 @@
 import { buildApp } from './app';
 import { readConfig } from './config';
+import { readAiConfig } from './platform/llm/config';
+import { createAiServices } from './platform/llm/create-ai';
 
 const config = readConfig(process.env);
-const app = buildApp({
-  logger: {
-    level: config.LOG_LEVEL,
-    redact: [
-      'req.headers.authorization',
-      'req.headers.cookie',
-      'res.headers["set-cookie"]',
-    ],
+const ai = createAiServices(readAiConfig(process.env));
+const app = buildApp(
+  {
+    logger: {
+      level: config.LOG_LEVEL,
+      redact: [
+        'req.headers.authorization',
+        'req.headers.cookie',
+        'res.headers["set-cookie"]',
+      ],
+    },
   },
-});
+  { ai },
+);
 
 let stopping = false;
 

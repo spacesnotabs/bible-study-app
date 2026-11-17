@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import type { ReactNode } from 'react';
 import type { BibleBookText } from '@bible-study/contracts';
 import {
   adjacentChapter,
@@ -27,7 +28,7 @@ function initialPosition(): ChapterReference {
   );
 }
 
-export function BibleReader() {
+export function BibleReader({ headerActions }: { headerActions?: ReactNode }) {
   const [position, setPosition] = useState(initialPosition);
   const [bookState, setBookState] = useState<BookState>({
     bookId: position.bookId,
@@ -105,6 +106,9 @@ export function BibleReader() {
         <a href="https://berean.bible/" target="_blank" rel="noreferrer">
           Berean Standard Bible
         </a>
+        {headerActions && (
+          <div className="reader-header-actions">{headerActions}</div>
+        )}
       </header>
 
       <nav className="reader-controls" aria-label="Bible navigation">

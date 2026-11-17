@@ -7,6 +7,11 @@ navigation, browser-history-aware chapter URLs, and optional device-local last
 chapter storage. Text is distributed as validated static book assets, so reading
 does not depend on the API. The source and per-book checksums are pinned.
 
+The reader also has persistent Light/Dark/System appearance. The Node API has
+configurable text and image model adapters with application-level interfaces,
+disabled by default. Its capability-status endpoint performs no inference. See
+[model integration](model-integration.md) for provider settings and current limits.
+
 Other study, account, saved-library, sync, and billing responsibilities below remain
 future design constraints. See [the prototype decision](decisions/0002-static-reader.md).
 
@@ -121,7 +126,9 @@ Billing can later update a server-side entitlement record through verified,
 idempotently processed provider events. Study use cases consume capabilities and
 budgets. Payment state must not become the application's identity model.
 
-The scaffold exposes only health; it cannot incur LLM charges.
+The API exposes health and configured AI availability, with no generation route.
+Provider execution is available internally to future trusted study use cases;
+the default configuration disables both text and images.
 
 ## Scripture, sources, and translation rights
 
