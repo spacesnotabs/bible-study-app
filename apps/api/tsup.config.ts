@@ -1,0 +1,12 @@
+import { defineConfig } from 'tsup';
+
+export default defineConfig({
+  entry: ['src/server.ts'],
+  format: ['esm'],
+  platform: 'node',
+  target: 'node24',
+  bundle: true,
+  noExternal: [/^@bible-study\//],
+  sourcemap: true,
+  clean: true,
+});

@@ -1,0 +1,39 @@
+:root {
+  color-scheme: light dark;
+  font-family: system-ui, sans-serif;
+  color: light-dark(#263b31, #e6eee5);
+  background: light-dark(#faf8f2, #1f2822);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+main {
+  width: min(100%, 48rem);
+  margin: 0 auto;
+  padding: clamp(2rem, 8vw, 6rem) 1.5rem;
+}
+
+h1 {
+  margin: 0 0 1.25rem;
+  font-family: Georgia, serif;
+  font-size: clamp(2rem, 6vw, 3.5rem);
+  font-weight: 400;
+}
+
+p {
+  max-width: 36rem;
+  line-height: 1.7;
+}
+
+.eyebrow {
+  font-size: 0.875rem;
+  letter-spacing: 0.06em;
+}
