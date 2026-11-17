@@ -1,5 +1,15 @@
 # Architecture
 
+## Current prototype
+
+The web reader is implemented with the full public-domain BSB corpus, book/chapter
+navigation, browser-history-aware chapter URLs, and optional device-local last
+chapter storage. Text is distributed as validated static book assets, so reading
+does not depend on the API. The source and per-book checksums are pinned.
+
+Other study, account, saved-library, sync, and billing responsibilities below remain
+future design constraints. See [the prototype decision](decisions/0002-static-reader.md).
+
 ## The user experience this structure supports
 
 - A web app designed for tablet/desktop study alongside the Bible and usable on phones.
@@ -11,7 +21,7 @@
 - Conservative evangelical/Protestant study, with sources and fair representation
   of differing conservative interpretations.
 
-These are design constraints, not claims that the scaffold implements the features.
+These describe the intended application; only the reader slice above is implemented.
 
 ## Overall shape
 
@@ -120,8 +130,11 @@ At import, pin the edition/date and checksum, retain source/rights metadata, and
 define canonical book IDs and versification. Keep passage anchors independent of
 the reader's selected translation, with explicit mapping when editions differ.
 
-No Bible corpus has been imported. No claim is made that a particular downloadable
-edition has already been checked or pinned.
+The first import is complete. Static book files and a provenance manifest live in
+`apps/web/public/bibles/bsb`; `scripts/import-bsb.mjs` reproducibly imports the
+checksum-pinned official third-printing text. Its source Last-Modified value was
+July 31, 2026. The shared catalog uses USFM book IDs. This first import preserves
+verse text and numbering but does not include footnotes or paragraph/poetry layout.
 
 For future translations, store display/caching/redistribution and LLM-processing
 permissions separately. An API display license is not automatically an AI license.
@@ -168,12 +181,14 @@ generation timing deliberately when guided mode is built.
   external services.
 - CI runs formatting checks, strict type checks, HTTP/configuration tests, and builds.
 
-There is no deployment, database, login provider, LLM provider, or billing account
-configured today. PostgreSQL is a future persistence candidate, not a prerequisite.
+The current hosted prototype is a static reader; `.openai/hosting.json` identifies
+the Sites project and `npm run build:site` writes root `dist/`. The API is not
+deployed as part of that static preview. There is no database, login provider,
+LLM provider, or billing account configured. PostgreSQL remains a future candidate.
 
 ## First implementation slices
 
-1. Import and identify the current official BSB text; build passage reading.
+1. Completed: import and identify the current official BSB text; build passage reading.
 2. Add IndexedDB saving and export for a note/highlight, without login.
 3. Add server-side guest usage controls before one source-backed LLM study flow.
 4. Add guided chapter suggestions using the same study boundary.

@@ -15,3 +15,7 @@ export interface PassageReference {
   readonly verseStart?: number;
   readonly verseEnd?: number;
 }
+export { bibleBooks, findBibleBook } from './books';
+export type { BibleBook } from './books';
+export { firstChapter, isChapterReference, adjacentChapter } from './chapters';
+export type { ChapterReference } from './chapters';

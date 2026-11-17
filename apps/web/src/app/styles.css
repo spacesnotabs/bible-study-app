@@ -15,25 +15,120 @@ body {
   margin: 0;
 }
 
-main {
-  width: min(100%, 48rem);
+.reader {
+  width: min(100%, 50rem);
   margin: 0 auto;
-  padding: clamp(2rem, 8vw, 6rem) 1.5rem;
+  padding: 1.5rem;
 }
 
 h1 {
-  margin: 0 0 1.25rem;
-  font-family: Georgia, serif;
-  font-size: clamp(2rem, 6vw, 3.5rem);
-  font-weight: 400;
+  margin: 0;
+  font-size: 1.75rem;
 }
 
-p {
-  max-width: 36rem;
-  line-height: 1.7;
+.reader-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.5rem 1rem;
+  margin-bottom: 1.5rem;
 }
 
-.eyebrow {
+a {
+  color: inherit;
+  text-underline-offset: 0.2em;
+}
+
+.reader-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+}
+
+.reader-controls label {
+  display: grid;
+  gap: 0.35rem;
   font-size: 0.875rem;
-  letter-spacing: 0.06em;
+}
+
+.book-control {
+  flex: 1 1 12rem;
+}
+
+.chapter-control {
+  flex: 0 0 6rem;
+}
+
+button,
+select {
+  font: inherit;
+  font-size: 1rem;
+  min-height: 44px;
+  max-width: 100%;
+  border: 1px solid light-dark(#aab5ad, #69796e);
+  border-radius: 4px;
+  padding: 0.5rem 0.75rem;
+  color: inherit;
+  background: light-dark(#fffef9, #29362d);
+}
+
+button:disabled {
+  opacity: 0.45;
+}
+
+button:focus-visible,
+select:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+
+.chapter-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+article h2 {
+  font-family: Georgia, serif;
+  font-weight: 400;
+  font-size: 1.75rem;
+  margin: 0 0 1rem;
+}
+
+.verses {
+  font-family: Georgia, serif;
+  font-size: 1.2rem;
+  line-height: 1.85;
+}
+
+.verse {
+  margin: 0 0 0.6rem;
+  overflow-wrap: break-word;
+}
+
+.verse sup {
+  font-family: system-ui, sans-serif;
+  font-size: 0.65em;
+  margin-right: 0.15rem;
+}
+
+.chapter-footer {
+  margin-top: 2rem;
+}
+
+.reader-footer {
+  margin-top: 2rem;
+  font-size: 0.875rem;
+}
+
+@media (max-width: 440px) {
+  .reader {
+    padding: 1rem;
+  }
+
+  .book-control {
+    flex-basis: 100%;
+  }
 }

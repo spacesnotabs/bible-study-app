@@ -8,6 +8,8 @@ Share transport vocabulary rather than implementation. Do not export database
 entities, environment variables, provider SDK objects, sessions, credentials, or
 server-only code. Import shared domain vocabulary when a real endpoint needs it.
 
-Only the health contract exists today. Add study, content, and sync contracts with
-their implementations; do not invent a complete API in advance. A future native
-client can reuse these schemas or consume documented HTTP contracts independently.
+Health and static Bible book contracts exist today. Book assets are fetched directly
+by the reader and validated with the same runtime-schema approach. Add study and
+sync contracts with their implementations; do not invent a complete API in advance.
+A future native client can reuse these schemas or consume documented HTTP contracts
+independently.

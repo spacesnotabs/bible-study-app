@@ -5,7 +5,7 @@
   "type": "module",
   "description": "A guest-friendly Bible reading and study application.",
   "engines": {
-    "node": ">=24 <25",
+    "node": ">=24.15 <25",
     "npm": ">=11"
   },
   "workspaces": [
@@ -13,8 +13,10 @@
     "packages/*"
   ],
   "scripts": {
+    "import:bsb": "node scripts/import-bsb.mjs",
     "dev": "concurrently --kill-others --names api,web \"npm run dev --workspace=@bible-study/api\" \"npm run dev --workspace=@bible-study/web\"",
     "build": "npm run build --workspaces --if-present",
+    "build:site": "npm run build --workspace=@bible-study/web -- --outDir ../../dist --emptyOutDir",
     "typecheck": "npm run typecheck --workspaces --if-present",
     "test": "vitest run",
     "test:watch": "vitest",
